@@ -657,8 +657,8 @@
         <scene sceneID="8aX-hI-AqP">
             <objects>
                 <viewController title="关于ZZModel生成器" id="pfs-AF-VVz" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="QSE-GG-eVT">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="431"/>
+                    <view key="view" id="QSE-GG-eVT">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="429"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCg-g4-Z79">
