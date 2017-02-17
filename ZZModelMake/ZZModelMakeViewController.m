@@ -55,6 +55,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(namedRulesDidChanged) name:@"NamedRulesDidChanged" object:nil];
 }
 
+- (void)viewDidAppear
+{
+    [super viewDidAppear];
+    
+    [self.view.window makeFirstResponder:self.view];
+}
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];

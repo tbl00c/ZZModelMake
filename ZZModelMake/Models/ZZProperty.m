@@ -28,9 +28,17 @@
         className = [className substringToIndex:className.length - [ZZModelConfig sharedInstance].classSuffix.length];
     }
     
-    for (NSString *str in [ZZModelConfig sharedInstance].classIgnoreWords) {
+    for (NSString *str in [ZZModelConfig sharedInstance].classPrefixIgnoreWords) {
+        if ([className hasPrefix:str]) {
+            className = [className substringFromIndex:str.length];
+            return [ZZProperty keyFromClassName:className];     // 递归剔除
+        }
+    }
+    
+    for (NSString *str in [ZZModelConfig sharedInstance].classSuffixIgnoreWords) {
         if ([className hasSuffix:str]) {
             className = [className substringToIndex:className.length - str.length];
+            return [ZZProperty keyFromClassName:className];     // 递归剔除
         }
     }
     

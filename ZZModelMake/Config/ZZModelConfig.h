@@ -15,16 +15,25 @@ typedef NS_ENUM(NSInteger, ZZThirdPartLibType) {
 
 @interface ZZModelConfig : NSObject
 
+/// 作者姓名
 @property (nonatomic, strong) NSString *authorName;
 
+/// 是否使用第三方库（将自动为其增加支持代码）
 @property (nonatomic, assign) ZZThirdPartLibType thirdPartLibType;
 
+/// 类前缀
 @property (nonatomic, strong) NSString *classPrefix;
 
+/// 类后缀
 @property (nonatomic, strong) NSString *classSuffix;
 
-@property (nonatomic, strong) NSArray *classIgnoreWords;
+/// 类头过滤词
+@property (nonatomic, strong) NSArray *classSuffixIgnoreWords;
 
+/// 类尾过滤词
+@property (nonatomic, strong) NSArray *classPrefixIgnoreWords;
+
+/// 是否使用引用的它的类的类名做前缀
 @property (nonatomic, assign) BOOL userOriginClassNamsAsPrefix;
 
 + (ZZModelConfig *)sharedInstance;

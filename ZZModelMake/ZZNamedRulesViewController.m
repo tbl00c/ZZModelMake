@@ -14,9 +14,11 @@
 @property (weak) IBOutlet NSTextField *prefixLabel;
 @property (weak) IBOutlet NSTextField *suffixLabel;
 @property (weak) IBOutlet NSButton *originPrefixCheckBoox;
-@property (weak) IBOutlet NSTableView *tableView;
+@property (weak) IBOutlet NSTableView *prefixTableView;
+@property (weak) IBOutlet NSTableView *suffixTableView;
 
-@property (nonatomic, strong) NSMutableArray *classIgnoreWords;
+@property (nonatomic, strong) NSMutableArray *classPrefixIgnoreWords;
+@property (nonatomic, strong) NSMutableArray *classSuffixIgnoreWords;
 
 @end
 
@@ -28,40 +30,73 @@
     [self loadData];
 }
 
+- (void)viewDidAppear
+{
+    [super viewDidAppear];
+    
+    [self.view.window makeFirstResponder:self.view];
+}
+
 - (void)loadData
 {
     self.prefixLabel.stringValue = [ZZModelConfig sharedInstance].classPrefix;
     self.suffixLabel.stringValue = [ZZModelConfig sharedInstance].classSuffix;
     self.originPrefixCheckBoox.state = [ZZModelConfig sharedInstance].userOriginClassNamsAsPrefix;
-    self.classIgnoreWords = [ZZModelConfig sharedInstance].classIgnoreWords.mutableCopy;
-    [self.tableView reloadData];
+    self.classPrefixIgnoreWords = [ZZModelConfig sharedInstance].classPrefixIgnoreWords.mutableCopy;
+    [self.prefixTableView reloadData];
+    self.classSuffixIgnoreWords = [ZZModelConfig sharedInstance].classSuffixIgnoreWords.mutableCopy;
+    [self.suffixTableView reloadData];
 }
 
 #pragma mark - Event Reponse
-- (IBAction)addButtonClick:(id)sender {
+- (IBAction)addButtonClick:(NSButton *)sender {
     [self.view.window makeFirstResponder:self.view];
     NSMutableArray *array = @[@"New Item"].mutableCopy;
-    [array addObjectsFromArray:self.classIgnoreWords];
-    self.classIgnoreWords = array;
-    [self.tableView reloadData];
-    [self.tableView deselectRow:self.tableView.selectedRow];
-    [self.tableView editColumn:0 row:0 withEvent:nil select:YES];
+    if (sender.tag == 0) {
+        [self.view.window makeFirstResponder:self.prefixTableView];
+        [array addObjectsFromArray:self.classPrefixIgnoreWords];
+        self.classPrefixIgnoreWords = array;
+        [self.prefixTableView reloadData];
+        [self.prefixTableView deselectRow:self.prefixTableView.selectedRow];
+        [self.prefixTableView editColumn:0 row:0 withEvent:nil select:YES];
+    }
+    else if (sender.tag == 1) {
+        [self.view.window makeFirstResponder:self.suffixTableView];
+        [array addObjectsFromArray:self.classSuffixIgnoreWords];
+        self.classSuffixIgnoreWords = array;
+        [self.suffixTableView reloadData];
+        [self.suffixTableView deselectRow:self.suffixTableView.selectedRow];
+        [self.suffixTableView editColumn:0 row:0 withEvent:nil select:YES];
+    }
 }
 
-- (IBAction)subButtonClick:(id)sender {
-    [self.view.window makeFirstResponder:self.tableView];
-    NSInteger selectIndex = self.tableView.selectedRow;
-    if (selectIndex >= 0 && selectIndex < self.classIgnoreWords.count) {
-        [self.classIgnoreWords removeObjectAtIndex:selectIndex];
-        [self.tableView reloadData];
+- (IBAction)subButtonClick:(NSButton *)sender {
+    [self.view.window makeFirstResponder:self.view];
+    if (sender.tag == 0) {
+        [self.view.window makeFirstResponder:self.prefixTableView];
+        NSInteger selectIndex = self.prefixTableView.selectedRow;
+        if (selectIndex >= 0 && selectIndex < self.classPrefixIgnoreWords.count) {
+            [self.classPrefixIgnoreWords removeObjectAtIndex:selectIndex];
+            [self.prefixTableView reloadData];
+        }
+    }
+    else if (sender.tag == 1) {
+        [self.view.window makeFirstResponder:self.suffixTableView];
+        NSInteger selectIndex = self.suffixTableView.selectedRow;
+        if (selectIndex >= 0 && selectIndex < self.classSuffixIgnoreWords.count) {
+            [self.classSuffixIgnoreWords removeObjectAtIndex:selectIndex];
+            [self.suffixTableView reloadData];
+        }
     }
 }
 
 - (IBAction)okButtonClick:(id)sender {
+    [self.view.window makeFirstResponder:self.view];
     [ZZModelConfig sharedInstance].classPrefix = self.prefixLabel.stringValue;
     [ZZModelConfig sharedInstance].classSuffix = self.suffixLabel.stringValue;
     [ZZModelConfig sharedInstance].userOriginClassNamsAsPrefix = self.originPrefixCheckBoox.state;
-    [ZZModelConfig sharedInstance].classIgnoreWords = self.classIgnoreWords;
+    [ZZModelConfig sharedInstance].classPrefixIgnoreWords = self.classPrefixIgnoreWords;
+    [ZZModelConfig sharedInstance].classSuffixIgnoreWords = self.classSuffixIgnoreWords;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"NamedRulesDidChanged" object:nil];
     [self.view.window close];
 }
@@ -75,19 +110,39 @@
 //MARK: NSTableViewDataSource
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-    return self.classIgnoreWords.count;
+    if (tableView.tag == 0) {
+        return self.classPrefixIgnoreWords.count;
+    }
+    else if (tableView.tag == 1) {
+        return self.classSuffixIgnoreWords.count;
+    }
+    return 0;
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    NSString *title = self.classIgnoreWords[row];
-    return title;
+    if (tableView.tag == 0) {
+        NSString *title = self.classPrefixIgnoreWords[row];
+        return title;
+    }
+    else if (tableView.tag == 1) {
+        NSString *title = self.classSuffixIgnoreWords[row];
+        return title;
+    }
+    return @"";
 }
 
 - (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    if (row < self.classIgnoreWords.count) {
-        [self.classIgnoreWords replaceObjectAtIndex:row withObject:object];
+    if (tableView.tag == 0) {
+        if (row < self.classPrefixIgnoreWords.count) {
+            [self.classPrefixIgnoreWords replaceObjectAtIndex:row withObject:object];
+        }
+    }
+    else if (tableView.tag == 1) {
+        if (row < self.classSuffixIgnoreWords.count) {
+            [self.classSuffixIgnoreWords replaceObjectAtIndex:row withObject:object];
+        }
     }
 }
 

@@ -31,7 +31,8 @@
 {
     [[NSUserDefaults standardUserDefaults] setObject:@"ZZ" forKey:@"classPrefix"];
     [[NSUserDefaults standardUserDefaults] setObject:@"Model" forKey:@"classSuffix"];
-    [[NSUserDefaults standardUserDefaults] setObject:@[@"Arr", @"arr", @"Model", @"model", @"Info", @"Array", @"Dic", @"Dictronary", @"Data", @"data"] forKey:@"classIgnoreWords"];
+    [[NSUserDefaults standardUserDefaults] setObject:@[@"Get", @"get"] forKey:@"classPrefixIgnoreWords"];
+    [[NSUserDefaults standardUserDefaults] setObject:@[@"Arr", @"arr", @"Model", @"model", @"Info", @"Array", @"Dic", @"Dictronary", @"Data", @"data"] forKey:@"classSuffixIgnoreWords"];
     [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:@"userOriginClassNamsAsPrefix"];
 }
 
@@ -85,14 +86,25 @@
     [[NSUserDefaults standardUserDefaults] setObject:@(userOriginClassNamsAsPrefix) forKey:@"userOriginClassNamsAsPrefix"];
 }
 
-- (NSArray *)classIgnoreWords
+- (NSArray *)classPrefixIgnoreWords
 {
-    NSArray *classIgnordWords = [[NSUserDefaults standardUserDefaults] objectForKey:@"classIgnoreWords"];
+    NSArray *classPrefixIgnoreWords = [[NSUserDefaults standardUserDefaults] objectForKey:@"classPrefixIgnoreWords"];
+    return classPrefixIgnoreWords;
+}
+- (void)setClassPrefixIgnoreWords:(NSArray *)classPrefixIgnoreWords
+{
+    [[NSUserDefaults standardUserDefaults] setObject:(classPrefixIgnoreWords ? classPrefixIgnoreWords : @[]) forKey:@"classPrefixIgnoreWords"];
+}
+
+
+- (NSArray *)classSuffixIgnoreWords
+{
+    NSArray *classIgnordWords = [[NSUserDefaults standardUserDefaults] objectForKey:@"classSuffixIgnoreWords"];
     return classIgnordWords;
 }
-- (void)setClassIgnoreWords:(NSArray *)classIgnoreWords
+- (void)setClassSuffixIgnoreWords:(NSArray *)classSuffixIgnoreWords
 {
-    [[NSUserDefaults standardUserDefaults] setObject:(classIgnoreWords ? classIgnoreWords : @[]) forKey:@"classIgnoreWords"];
+    [[NSUserDefaults standardUserDefaults] setObject:(classSuffixIgnoreWords ? classSuffixIgnoreWords : @[]) forKey:@"classSuffixIgnoreWords"];
 }
 
 @end
