@@ -9,9 +9,15 @@
 /* Begin PBXBuildFile section */
 		C23566C51E56ED46009B4D6D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C23566C41E56ED46009B4D6D /* AppDelegate.m */; };
 		C23566C81E56ED46009B4D6D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C23566C71E56ED46009B4D6D /* main.m */; };
-		C23566CB1E56ED46009B4D6D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23566CA1E56ED46009B4D6D /* ViewController.m */; };
 		C23566CD1E56ED46009B4D6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C23566CC1E56ED46009B4D6D /* Assets.xcassets */; };
-		C23566D01E56ED46009B4D6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C23566CE1E56ED46009B4D6D /* Main.storyboard */; };
+		C23566DB1E56ED6C009B4D6D /* ZZModelMakeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23566D81E56ED6C009B4D6D /* ZZModelMakeViewController.m */; };
+		C23566DC1E56ED6C009B4D6D /* ZZNamedRulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23566DA1E56ED6C009B4D6D /* ZZNamedRulesViewController.m */; };
+		C23566E21E56ED72009B4D6D /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C23566DF1E56ED72009B4D6D /* NSDate+Extension.m */; };
+		C23566E31E56ED72009B4D6D /* NSString+MMBJ.m in Sources */ = {isa = PBXBuildFile; fileRef = C23566E11E56ED72009B4D6D /* NSString+MMBJ.m */; };
+		C23566E71E56ED76009B4D6D /* ZZModelConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C23566E61E56ED76009B4D6D /* ZZModelConfig.m */; };
+		C23566ED1E56ED89009B4D6D /* ZZClass.m in Sources */ = {isa = PBXBuildFile; fileRef = C23566EA1E56ED89009B4D6D /* ZZClass.m */; };
+		C23566EE1E56ED89009B4D6D /* ZZProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = C23566EC1E56ED89009B4D6D /* ZZProperty.m */; };
+		C23566F11E56EDF5009B4D6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C23566EF1E56EDF5009B4D6D /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,11 +25,23 @@
 		C23566C31E56ED46009B4D6D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C23566C41E56ED46009B4D6D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C23566C71E56ED46009B4D6D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C23566C91E56ED46009B4D6D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C23566CA1E56ED46009B4D6D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C23566CC1E56ED46009B4D6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C23566CF1E56ED46009B4D6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C23566D11E56ED46009B4D6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C23566D71E56ED6C009B4D6D /* ZZModelMakeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZModelMakeViewController.h; sourceTree = "<group>"; };
+		C23566D81E56ED6C009B4D6D /* ZZModelMakeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZModelMakeViewController.m; sourceTree = "<group>"; };
+		C23566D91E56ED6C009B4D6D /* ZZNamedRulesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZNamedRulesViewController.h; sourceTree = "<group>"; };
+		C23566DA1E56ED6C009B4D6D /* ZZNamedRulesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZNamedRulesViewController.m; sourceTree = "<group>"; };
+		C23566DE1E56ED72009B4D6D /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
+		C23566DF1E56ED72009B4D6D /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
+		C23566E01E56ED72009B4D6D /* NSString+MMBJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MMBJ.h"; sourceTree = "<group>"; };
+		C23566E11E56ED72009B4D6D /* NSString+MMBJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MMBJ.m"; sourceTree = "<group>"; };
+		C23566E51E56ED76009B4D6D /* ZZModelConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZModelConfig.h; sourceTree = "<group>"; };
+		C23566E61E56ED76009B4D6D /* ZZModelConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZModelConfig.m; sourceTree = "<group>"; };
+		C23566E91E56ED89009B4D6D /* ZZClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZClass.h; sourceTree = "<group>"; };
+		C23566EA1E56ED89009B4D6D /* ZZClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZClass.m; sourceTree = "<group>"; };
+		C23566EB1E56ED89009B4D6D /* ZZProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZProperty.h; sourceTree = "<group>"; };
+		C23566EC1E56ED89009B4D6D /* ZZProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZProperty.m; sourceTree = "<group>"; };
+		C23566F01E56EDF5009B4D6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +74,14 @@
 		C23566C21E56ED46009B4D6D /* ZZModelMake */ = {
 			isa = PBXGroup;
 			children = (
-				C23566C31E56ED46009B4D6D /* AppDelegate.h */,
-				C23566C41E56ED46009B4D6D /* AppDelegate.m */,
-				C23566C91E56ED46009B4D6D /* ViewController.h */,
-				C23566CA1E56ED46009B4D6D /* ViewController.m */,
-				C23566CC1E56ED46009B4D6D /* Assets.xcassets */,
-				C23566CE1E56ED46009B4D6D /* Main.storyboard */,
-				C23566D11E56ED46009B4D6D /* Info.plist */,
+				C23566E41E56ED76009B4D6D /* Config */,
+				C23566DD1E56ED72009B4D6D /* Categories */,
+				C23566E81E56ED89009B4D6D /* Models */,
+				C23566D71E56ED6C009B4D6D /* ZZModelMakeViewController.h */,
+				C23566D81E56ED6C009B4D6D /* ZZModelMakeViewController.m */,
+				C23566D91E56ED6C009B4D6D /* ZZNamedRulesViewController.h */,
+				C23566DA1E56ED6C009B4D6D /* ZZNamedRulesViewController.m */,
+				C23566EF1E56EDF5009B4D6D /* Main.storyboard */,
 				C23566C61E56ED46009B4D6D /* Supporting Files */,
 			);
 			path = ZZModelMake;
@@ -71,9 +90,44 @@
 		C23566C61E56ED46009B4D6D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C23566CC1E56ED46009B4D6D /* Assets.xcassets */,
+				C23566D11E56ED46009B4D6D /* Info.plist */,
+				C23566C31E56ED46009B4D6D /* AppDelegate.h */,
+				C23566C41E56ED46009B4D6D /* AppDelegate.m */,
 				C23566C71E56ED46009B4D6D /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C23566DD1E56ED72009B4D6D /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				C23566DE1E56ED72009B4D6D /* NSDate+Extension.h */,
+				C23566DF1E56ED72009B4D6D /* NSDate+Extension.m */,
+				C23566E01E56ED72009B4D6D /* NSString+MMBJ.h */,
+				C23566E11E56ED72009B4D6D /* NSString+MMBJ.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		C23566E41E56ED76009B4D6D /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				C23566E51E56ED76009B4D6D /* ZZModelConfig.h */,
+				C23566E61E56ED76009B4D6D /* ZZModelConfig.m */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		C23566E81E56ED89009B4D6D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C23566E91E56ED89009B4D6D /* ZZClass.h */,
+				C23566EA1E56ED89009B4D6D /* ZZClass.m */,
+				C23566EB1E56ED89009B4D6D /* ZZProperty.h */,
+				C23566EC1E56ED89009B4D6D /* ZZProperty.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C23566CD1E56ED46009B4D6D /* Assets.xcassets in Resources */,
-				C23566D01E56ED46009B4D6D /* Main.storyboard in Resources */,
+				C23566F11E56EDF5009B4D6D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,8 +200,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C23566CB1E56ED46009B4D6D /* ViewController.m in Sources */,
+				C23566EE1E56ED89009B4D6D /* ZZProperty.m in Sources */,
 				C23566C81E56ED46009B4D6D /* main.m in Sources */,
+				C23566E31E56ED72009B4D6D /* NSString+MMBJ.m in Sources */,
+				C23566E21E56ED72009B4D6D /* NSDate+Extension.m in Sources */,
+				C23566DB1E56ED6C009B4D6D /* ZZModelMakeViewController.m in Sources */,
+				C23566E71E56ED76009B4D6D /* ZZModelConfig.m in Sources */,
+				C23566DC1E56ED6C009B4D6D /* ZZNamedRulesViewController.m in Sources */,
+				C23566ED1E56ED89009B4D6D /* ZZClass.m in Sources */,
 				C23566C51E56ED46009B4D6D /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -155,10 +215,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C23566CE1E56ED46009B4D6D /* Main.storyboard */ = {
+		C23566EF1E56EDF5009B4D6D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C23566CF1E56ED46009B4D6D /* Base */,
+				C23566F01E56EDF5009B4D6D /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
