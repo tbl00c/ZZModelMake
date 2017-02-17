@@ -124,10 +124,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Model生成器-->
+        <!--ZZModel生成器-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController title="Model生成器" id="XfG-lQ-9wD" customClass="ZZModelMakeViewController" sceneMemberID="viewController">
+                <viewController title="ZZModel生成器" id="XfG-lQ-9wD" customClass="ZZModelMakeViewController" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="214"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -298,9 +298,23 @@
                                     <segue destination="Ojo-2U-RoE" kind="modal" id="tQl-XS-Z1t"/>
                                 </connections>
                             </button>
+                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VXU-Vr-orL">
+                                <rect key="frame" x="440" y="-3" width="22" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="18" id="EhR-ao-5DH"/>
+                                </constraints>
+                                <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2wg-wc-EFh">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="pfs-AF-VVz" kind="modal" id="CnW-iK-tjH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Ha1-1s-wJ9" firstAttribute="leading" secondItem="12O-sz-ykB" secondAttribute="trailing" constant="16" id="0RT-pA-bCU"/>
+                            <constraint firstAttribute="bottom" secondItem="VXU-Vr-orL" secondAttribute="bottom" id="2L1-kG-cwA"/>
                             <constraint firstItem="zcc-59-zqY" firstAttribute="centerY" secondItem="4bW-CT-n6n" secondAttribute="centerY" constant="-0.5" id="2Ow-SL-wqR"/>
                             <constraint firstItem="7yE-Lc-K4M" firstAttribute="leading" secondItem="rVa-1M-pLg" secondAttribute="leading" id="3Bj-Vu-IdI"/>
                             <constraint firstItem="kX6-KG-aKG" firstAttribute="centerY" secondItem="Ha1-1s-wJ9" secondAttribute="centerY" id="4Ve-oy-FM4"/>
@@ -314,7 +328,9 @@
                             <constraint firstItem="tcI-hv-nei" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="23" id="Gx5-VT-Mrx"/>
                             <constraint firstItem="Quj-VU-Yl6" firstAttribute="centerY" secondItem="ake-VL-r0F" secondAttribute="centerY" id="K3v-cU-OBp"/>
                             <constraint firstItem="Tl0-RN-TnJ" firstAttribute="centerY" secondItem="5wl-Kn-v4O" secondAttribute="centerY" id="LQI-uA-YGh"/>
+                            <constraint firstAttribute="trailing" secondItem="VXU-Vr-orL" secondAttribute="trailing" constant="20" id="Meu-fX-MBi"/>
                             <constraint firstItem="7yE-Lc-K4M" firstAttribute="top" secondItem="rVa-1M-pLg" secondAttribute="bottom" constant="25" id="Ono-h0-33b"/>
+                            <constraint firstAttribute="bottom" secondItem="VXU-Vr-orL" secondAttribute="bottom" id="PlM-sC-6yT"/>
                             <constraint firstAttribute="trailing" secondItem="Tl0-RN-TnJ" secondAttribute="trailing" constant="20" id="QWr-4P-m9p"/>
                             <constraint firstItem="ake-VL-r0F" firstAttribute="leading" secondItem="tcI-hv-nei" secondAttribute="leading" id="R9B-C5-LOo"/>
                             <constraint firstItem="ake-VL-r0F" firstAttribute="top" secondItem="tcI-hv-nei" secondAttribute="bottom" constant="25" id="S4J-XD-tDM"/>
@@ -328,6 +344,7 @@
                             <constraint firstItem="kX6-KG-aKG" firstAttribute="leading" secondItem="Ha1-1s-wJ9" secondAttribute="trailing" constant="14" id="gDq-C9-2n0"/>
                             <constraint firstItem="Wjk-So-lav" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="21" id="hCl-DX-2I6"/>
                             <constraint firstItem="Wjk-So-lav" firstAttribute="top" secondItem="7yE-Lc-K4M" secondAttribute="bottom" constant="28" id="iQH-Ny-RIy"/>
+                            <constraint firstAttribute="trailing" secondItem="VXU-Vr-orL" secondAttribute="trailing" constant="20" id="iVj-Nf-Ey8"/>
                             <constraint firstItem="5wl-Kn-v4O" firstAttribute="centerY" secondItem="tcI-hv-nei" secondAttribute="centerY" id="j4M-Ht-mT8"/>
                             <constraint firstItem="t2c-2U-rh9" firstAttribute="centerY" secondItem="zcc-59-zqY" secondAttribute="centerY" id="lvq-tJ-SKf"/>
                             <constraint firstItem="zcc-59-zqY" firstAttribute="leading" secondItem="4bW-CT-n6n" secondAttribute="trailing" constant="16" id="o6s-Lg-AbX"/>
@@ -635,6 +652,53 @@
                 <customObject id="O6T-wS-Ymq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-12" y="1200.5"/>
+        </scene>
+        <!--关于ZZModel生成器-->
+        <scene sceneID="8aX-hI-AqP">
+            <objects>
+                <viewController title="关于ZZModel生成器" id="pfs-AF-VVz" sceneMemberID="viewController">
+                    <view key="view" misplaced="YES" id="QSE-GG-eVT">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="431"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCg-g4-Z79">
+                                <rect key="frame" x="18" y="35" width="404" height="374"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="g8t-q0-WSv"/>
+                                </constraints>
+                                <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" id="4q2-4N-ZxN">
+                                    <font key="font" metaFont="system"/>
+                                    <mutableString key="title">ZZModelMake是一款可以根据JSON文件生成OC模型类的小工具。其主要功能和逻辑如下：
+
+1、根据JSON文件递归生成所有模型类，并自动引入头文件；
+
+2、类名的命名规则可定制，包括类的前缀、后缀。创建新类时，支持针对JSON Key中的前后缀进行过滤，如get、arr这样的词；
+
+3、类的命名的默认规则是将JSON中的key值经过过滤处理后，拼接到当前引用它的类的原key后面，再拼接上类前后缀。(如，ZZAModel中引用了一个key为B的类，那么key为B的类命名为ZZABModel)。当然也支持不拼接之前的类名，在“命名规则”中可设置；
+
+4、在.m文件中，支持添加第三方JSON-Model转换库的Array映射代码；
+
+5、输入作者名后，将在类的头部生成和Xcode一样的版权信息。
+
+如在使用中遇到什么问题，或者有什么建议，请联系我~
+
+Author：李伯坤          Mail：libokun@58ganji.com</mutableString>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="mCg-g4-Z79" secondAttribute="bottom" constant="35" id="Hny-a4-o6v"/>
+                            <constraint firstItem="mCg-g4-Z79" firstAttribute="leading" secondItem="QSE-GG-eVT" secondAttribute="leading" constant="20" id="V6r-OF-qeS"/>
+                            <constraint firstItem="mCg-g4-Z79" firstAttribute="top" secondItem="QSE-GG-eVT" secondAttribute="top" constant="20" id="YIu-Bl-wDo"/>
+                            <constraint firstAttribute="trailing" secondItem="mCg-g4-Z79" secondAttribute="trailing" constant="20" id="kK5-7W-VcC"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="pfF-zT-LJW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="379" y="1133.5"/>
         </scene>
     </scenes>
     <resources>
