@@ -10,9 +10,9 @@
 #import "ZZModelConfig.h"
 
 @interface ZZNamedRulesViewController () <NSTableViewDataSource>
-
-@property (weak) IBOutlet NSTextField *prefixLabel;
-@property (weak) IBOutlet NSTextField *suffixLabel;
+@property (weak) IBOutlet NSTextField *productNameTF;
+@property (weak) IBOutlet NSTextField *prefixTF;
+@property (weak) IBOutlet NSTextField *suffixTF;
 @property (weak) IBOutlet NSButton *originPrefixCheckBoox;
 @property (weak) IBOutlet NSTableView *prefixTableView;
 @property (weak) IBOutlet NSTableView *suffixTableView;
@@ -39,8 +39,9 @@
 
 - (void)loadData
 {
-    self.prefixLabel.stringValue = [ZZModelConfig sharedInstance].classPrefix;
-    self.suffixLabel.stringValue = [ZZModelConfig sharedInstance].classSuffix;
+    self.productNameTF.stringValue = [ZZModelConfig sharedInstance].productName;
+    self.prefixTF.stringValue = [ZZModelConfig sharedInstance].classPrefix;
+    self.suffixTF.stringValue = [ZZModelConfig sharedInstance].classSuffix;
     self.originPrefixCheckBoox.state = [ZZModelConfig sharedInstance].userOriginClassNamsAsPrefix;
     self.classPrefixIgnoreWords = [ZZModelConfig sharedInstance].classPrefixIgnoreWords.mutableCopy;
     [self.prefixTableView reloadData];
@@ -92,8 +93,9 @@
 
 - (IBAction)okButtonClick:(id)sender {
     [self.view.window makeFirstResponder:self.view];
-    [ZZModelConfig sharedInstance].classPrefix = self.prefixLabel.stringValue;
-    [ZZModelConfig sharedInstance].classSuffix = self.suffixLabel.stringValue;
+    [ZZModelConfig sharedInstance].productName = self.productNameTF.stringValue;
+    [ZZModelConfig sharedInstance].classPrefix = self.prefixTF.stringValue;
+    [ZZModelConfig sharedInstance].classSuffix = self.suffixTF.stringValue;
     [ZZModelConfig sharedInstance].userOriginClassNamsAsPrefix = self.originPrefixCheckBoox.state;
     [ZZModelConfig sharedInstance].classPrefixIgnoreWords = self.classPrefixIgnoreWords;
     [ZZModelConfig sharedInstance].classSuffixIgnoreWords = self.classSuffixIgnoreWords;
