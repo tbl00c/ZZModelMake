@@ -7,6 +7,7 @@
 //
 
 #import "ZZModelConfig.h"
+#import "NSDate+Extension.h"
 
 @implementation ZZModelConfig
 
@@ -19,8 +20,9 @@
         if (![[NSUserDefaults standardUserDefaults] objectForKey:@"isFirstRun"]) {
             [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"isFirstRun"];
             // 默认设置
-            [[NSUserDefaults standardUserDefaults] setObject:@"ZZModelMake" forKey:@"authorName"];
-            [[NSUserDefaults standardUserDefaults] setObject:@(ZZThirdPartLibTypeMJExtension) forKey:@"thirdPartLibType"];
+            [config setAuthorName:@"ZZModelMake"];
+            [config setProductName:@"zhuanzhuan"];
+            [config setThirdPartLibType:ZZThirdPartLibTypeMJExtension];
             [config resetToDefaultConfig];
         }
     });
@@ -29,13 +31,27 @@
 
 - (void)resetToDefaultConfig
 {
-    [[NSUserDefaults standardUserDefaults] setObject:@"ZZ" forKey:@"classPrefix"];
-    [[NSUserDefaults standardUserDefaults] setObject:@"Model" forKey:@"classSuffix"];
-    [[NSUserDefaults standardUserDefaults] setObject:@[@"Get", @"get"] forKey:@"classPrefixIgnoreWords"];
-    [[NSUserDefaults standardUserDefaults] setObject:@[@"Arr", @"arr", @"Model", @"model", @"Info", @"Array", @"Dic", @"Dictronary", @"Data", @"data"] forKey:@"classSuffixIgnoreWords"];
-    [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:@"userOriginClassNamsAsPrefix"];
+    [self setClassPrefix:@"ZZ"];
+    [self setClassSuffix:@"Model"];
+    [self setClassPrefixIgnoreWords:@[@"Get", @"get"]];
+    [self setClassSuffixIgnoreWords:@[@"Arr", @"arr", @"Model", @"model", @"Info", @"Array", @"Dic", @"Dictronary", @"Data", @"data"]];
+    [self setUserOriginClassNamsAsPrefix:YES];
 }
 
+- (NSString *)copyrightCodeByFileName:(NSString *)fileName
+{
+    NSString *authorName = self.authorName;
+    NSString *productName = self.productName;
+    NSString *dateString = [NSString stringWithFormat:@"%d/%d/%d", (int)[[NSDate date] year], (int)[[NSDate date] month], (int)[[NSDate date] day]];
+    NSString *codeString = [NSString stringWithFormat:@"//\n//  %@\n//  %@\n//\n//  Created by %@ on %@.\n//  Copyright © 2017年 %@. All rights reserved.\n//\n\n",
+                            fileName,
+                            productName,
+                            authorName, dateString,
+                            authorName];
+    return codeString;
+}
+
+//MARK: 作者姓名
 - (NSString *)authorName
 {
     NSString *authorName = [[NSUserDefaults standardUserDefaults] objectForKey:@"authorName"];
@@ -46,6 +62,18 @@
     [[NSUserDefaults standardUserDefaults] setObject:authorName ? authorName : @"" forKey:@"authorName"];
 }
 
+//MARK: 项目名称
+- (NSString *)productName
+{
+    NSString *productName = [[NSUserDefaults standardUserDefaults] objectForKey:@"productName"];
+    return productName;
+}
+- (void)setProductName:(NSString *)productName
+{
+    [[NSUserDefaults standardUserDefaults] setObject:productName ? productName : @"" forKey:@"productName"];
+}
+
+//MARK: 第三方json-model库
 - (ZZThirdPartLibType)thirdPartLibType
 {
     NSNumber *type = [[NSUserDefaults standardUserDefaults] objectForKey:@"thirdPartLibType"];
@@ -56,6 +84,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:@(thirdPartLibType) forKey:@"thirdPartLibType"];
 }
 
+//MARK: 类前缀
 - (NSString *)classPrefix
 {
     NSString *classPrefix = [[NSUserDefaults standardUserDefaults] objectForKey:@"classPrefix"];
@@ -66,6 +95,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:classPrefix ? classPrefix : @"" forKey:@"classPrefix"];
 }
 
+//MARK: 类后缀
 - (NSString *)classSuffix
 {
     NSString *classSuffix = [[NSUserDefaults standardUserDefaults] objectForKey:@"classSuffix"];
@@ -76,6 +106,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:classSuffix ? classSuffix : @"" forKey:@"classSuffix"];
 }
 
+//MARK: 拼接引用类类名做前缀
 - (BOOL)userOriginClassNamsAsPrefix
 {
     NSNumber *userOriginClassNamsAsPrefix = [[NSUserDefaults standardUserDefaults] objectForKey:@"userOriginClassNamsAsPrefix"];
@@ -86,6 +117,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:@(userOriginClassNamsAsPrefix) forKey:@"userOriginClassNamsAsPrefix"];
 }
 
+//MARK: key做类名时，头部忽略词
 - (NSArray *)classPrefixIgnoreWords
 {
     NSArray *classPrefixIgnoreWords = [[NSUserDefaults standardUserDefaults] objectForKey:@"classPrefixIgnoreWords"];
@@ -96,7 +128,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:(classPrefixIgnoreWords ? classPrefixIgnoreWords : @[]) forKey:@"classPrefixIgnoreWords"];
 }
 
-
+//MARK: key做类名时，尾部忽略词
 - (NSArray *)classSuffixIgnoreWords
 {
     NSArray *classIgnordWords = [[NSUserDefaults standardUserDefaults] objectForKey:@"classSuffixIgnoreWords"];

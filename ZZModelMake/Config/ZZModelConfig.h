@@ -18,6 +18,9 @@ typedef NS_ENUM(NSInteger, ZZThirdPartLibType) {
 /// 作者姓名
 @property (nonatomic, strong) NSString *authorName;
 
+/// 项目名称
+@property (nonatomic, strong) NSString *productName;
+
 /// 是否使用第三方库（将自动为其增加支持代码）
 @property (nonatomic, assign) ZZThirdPartLibType thirdPartLibType;
 
@@ -39,5 +42,8 @@ typedef NS_ENUM(NSInteger, ZZThirdPartLibType) {
 + (ZZModelConfig *)sharedInstance;
 
 - (void)resetToDefaultConfig;
+
+/// 版权信息生成
+- (NSString *)copyrightCodeByFileName:(NSString *)fileName;
 
 @end

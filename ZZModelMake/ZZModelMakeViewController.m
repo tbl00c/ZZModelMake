@@ -106,6 +106,8 @@
 }
 
 - (IBAction)createButtonClick:(id)sender {
+    [self.view.window makeFirstResponder:self.view];
+    
     NSString *jsonFilePath = self.pathLabel.stringValue;
     NSString *targetPath = self.targetPath;
     NSString *className = self.classNameTF.stringValue;

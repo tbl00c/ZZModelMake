@@ -7,7 +7,6 @@
 //
 
 #import "ZZClass.h"
-#import "NSDate+Extension.h"
 #import "ZZModelConfig.h"
 
 @implementation ZZClass
@@ -110,9 +109,7 @@
         }
     }
 
-    NSString *authorName = [ZZModelConfig sharedInstance].authorName;
-    NSString *dateString = [NSString stringWithFormat:@"%d/%d/%d", (int)[[NSDate date] year], (int)[[NSDate date] month], (int)[[NSDate date] day]];
-    NSString *header = [NSString stringWithFormat:@"//\n//  %@\n//  zhuanzhuan\n//\n//  Created by %@ on %@.\n//  Copyright © 2017年 %@. All rights reserved.\n//\n\n", [filePath lastPathComponent], authorName, dateString, authorName];
+    NSString *header = [[ZZModelConfig sharedInstance] copyrightCodeByFileName:[filePath lastPathComponent]];
     code = [header stringByAppendingString:code];
     BOOL ok = [[NSFileManager defaultManager] createFileAtPath:filePath contents:[code dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
     if (!ok) {
