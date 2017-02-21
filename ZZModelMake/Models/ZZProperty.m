@@ -58,9 +58,17 @@
         }
         else if ([valueClass isSubclassOfClass:[NSArray class]]) {          // 数组
             self.valueClass = [NSArray class];
-            NSString *className = [self p_getNewClassNameByKey:key fatherClassName:fatherClassName];
-            self.childClass = [[ZZClass alloc] initWithClassName:className andJson:[(NSArray *)value objectAtIndex:0]];
-            self.valueClassName = [NSString stringWithFormat:@"%@<%@>", NSStringFromClass([NSArray class]), className];
+            NSString *className;
+            if ([(NSArray *)value count] > 0 && ![[[(NSArray *)value objectAtIndex:0] class] isSubclassOfClass:[NSString class]]) {
+                className = [self p_getNewClassNameByKey:key fatherClassName:fatherClassName];
+                self.childClass = [[ZZClass alloc] initWithClassName:className andJson:[(NSArray *)value objectAtIndex:0]];
+            }
+            else {
+                self.valueClass = [NSString class];
+                className = @"NSString";
+            }
+            
+            self.valueClassName = [NSString stringWithFormat:@"%@<%@ *>", NSStringFromClass([NSArray class]), className];
         }
         else if ([valueClass isSubclassOfClass:[NSDictionary class]]) {     // 字典
             self.valueClass = [NSDictionary class];
