@@ -10,18 +10,22 @@
 
 @interface AppDelegate ()
 
+@property (nonatomic, strong) NSWindow *window;
+
 @end
 
 @implementation AppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
+- (void)applicationDidFinishLaunching:(NSNotification *)notification
+{
+    self.window = [NSApplication sharedApplication].windows[0];
 }
 
-
-- (void)applicationWillTerminate:(NSNotification *)aNotification {
-    // Insert code here to tear down your application
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag
+{
+    [self.window makeKeyAndOrderFront:self];
+    
+    return YES;
 }
-
 
 @end
